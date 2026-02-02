@@ -12,7 +12,6 @@
   },
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "viem": "^2.45.1"
   },

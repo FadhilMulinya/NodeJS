@@ -1,18 +1,16 @@
-import { createPublicClient, http } from 'viem'
-import { mainnet } from 'viem/chains'
+import { client } from "./config/client"; // MUST have .js extension
 
 async function main() {
-  const client = createPublicClient({
-    chain: mainnet,
-    transport: http(),
-  })
-
-  // getBlockNumber is async, so await it
-  const blockNumber = await client.getBlockNumber()
-  console.log("The block number is", blockNumber.toString())
+  console.log("🚀 Starting application...");
+  const publicClient = await client();
+  console.log("✅ Application started successfully!");
+  
+  // Example: Get block number
+  const blockNumber = await publicClient.getBlockNumber();
+  console.log("📦 Current block number:", blockNumber);
 }
 
-
 main().catch((err) => {
-  console.error("Error:", err)
-})
+  console.error("❌ Error:", err);
+  process.exit(1);
+});
